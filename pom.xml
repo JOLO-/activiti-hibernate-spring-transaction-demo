@@ -1,0 +1,207 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>krestjaninoff</groupId>
+	<artifactId>mk-activiti-hello</artifactId>
+	<name>Activiti Hello World</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Simple &quot;Hello World&quot; with Activiti BPM</description>
+	<url>http://activiti.org/</url>
+	<packaging>jar</packaging>
+
+	<repositories>
+		<repository>
+			<id>alfresco</id>
+			<url>http://maven.alfresco.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>Activiti third party</id>
+			<url>http://maven.alfresco.com/nexus/content/repositories/activiti-thirdparty/</url>
+		</repository>
+		<repository>
+			<id>spring-extensions-milestone</id>
+			<name>Spring Extensions Milestone Repository</name>
+			<url>http://extensions.springframework.org/milestone</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<org.springframework.version>3.2.3.RELEASE</org.springframework.version>
+		<org.activiti.version>5.13</org.activiti.version>
+	</properties>
+
+
+	<dependencies>
+		<!--
+			Spring Framework 
+		-->
+	
+		<!-- Core utilities used by other modules. Define this if you use Spring 
+			Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Expression Language (depends on spring-core) Define this if you use 
+			Spring Expression APIs (org.springframework.expression.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define 
+			this if you use Spring Bean APIs (org.springframework.beans.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Aspect Oriented Programming (AOP) Framework (depends on spring-core, 
+			spring-beans) Define this if you use Spring AOP APIs (org.springframework.aop.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Application Context (depends on spring-core, spring-expression, spring-aop, 
+			spring-beans) This is the central artifact for Spring's Dependency Injection 
+			Container and is generally always defined -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Various Application Context utilities, including EhCache, JavaMail, 
+			Quartz, and Freemarker integration Define this if you need any of these integrations -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Transaction Management Abstraction (depends on spring-core, spring-beans, 
+			spring-aop, spring-context) Define this if you use Spring Transactions or 
+			DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- JDBC Data Access Library (depends on spring-core, spring-beans, spring-context, 
+			spring-tx) Define this if you use Spring's JdbcTemplate API (org.springframework.jdbc.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA, 
+			and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx) 
+			Define this if you need ORM (org.springframework.orm.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<!-- Support for testing Spring applications with tools such as JUnit and 
+			TestNG This artifact is generally always defined with a 'test' scope for 
+			the integration testing framework and unit testing stubs -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!--
+			Activiti 
+		 -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>${org.activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>${org.activiti.version}</version>
+		</dependency>
+		
+		
+		<!--
+			DataBase 
+		-->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
+		
+		
+		<!--
+			Testing 
+		-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+		</dependency>
+
+        <!--
+           Hibernate
+        -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.2.1.Final</version>
+        </dependency>
+	</dependencies>
+	
+
+	<build>
+	
+		<plugins>
+		
+			<!-- Basic compiler -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		
+		
+			<!-- Dependencies processing -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dependency-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>dependency:process-sources</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		
+		</plugins>
+		
+	</build>
+
+</project>
